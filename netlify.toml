@@ -1,0 +1,10 @@
+[[redirects]]
+  from = "https://crypto-api-playground.netlify.app/*"
+  to = "https://pacific-waters-19946.herokuapp.com/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
