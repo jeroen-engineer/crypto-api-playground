@@ -1,5 +1,5 @@
 export const CRYPTO_API = {
-  BASE_URL: "https://pacific-waters-19946.herokuapp.com",
+  BASE_URL: "https://api.coincap.io",
   CRYPTO_PATH: "/v2/assets",
   EXCHANGE_PATH: "/v2/exchanges",
 };
