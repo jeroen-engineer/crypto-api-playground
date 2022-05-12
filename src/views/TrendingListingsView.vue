@@ -1,6 +1,21 @@
 <script setup>
-import { ref, onMounted, computed } from "vue";
+import CryptoList from "../components/CryptoList.vue";
+import { onMounted, ref } from "vue";
 import { useCryptoStore } from "../stores/crypto";
+import {
+  TRENDING_LISTING,
+  CRYPTO_TABLE_TITLES,
+  CRYPTO_TABLE_DATA_FIELDS,
+  CRYPTO_DATA_SYMBOLS,
+  CRYPTO_DATA_PRECISIONS,
+} from "../constants";
+
+const fetchErrorMessage = ref(TRENDING_LISTING.fetchErrorMessage);
+const tableTitles = ref(CRYPTO_TABLE_TITLES);
+const tableDataFields = ref(CRYPTO_TABLE_DATA_FIELDS);
+const tableDataSymbols = ref(CRYPTO_DATA_SYMBOLS);
+const tableDataPrecisions = ref(CRYPTO_DATA_PRECISIONS);
+
 const store = useCryptoStore();
 
 onMounted(() => {
@@ -12,7 +27,16 @@ onMounted(() => {
 
 <template>
   <div>
-    <div v-if="store.showLoading">Loading</div>
-    <div v-else>Crypto data: {{ store.cryptoData }}</div>
+    <CryptoList
+      :cryptoData="store.cryptoData"
+      :showLoading="store.showLoading"
+      :showError="store.error"
+      :fetchErrorMessage="fetchErrorMessage"
+      :tableTitles="tableTitles"
+      :tableDataFields="tableDataFields"
+      :tableDataSymbols="tableDataSymbols"
+      :tableDataPrecisions="tableDataPrecisions"
+      :showPortfolio="true"
+    />
   </div>
 </template>
